@@ -2,14 +2,19 @@ package com.example.chat.netty.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.Charset;
+import java.util.List;
 
 @Slf4j
 public class NettyChatServerHandler extends ChannelInboundHandlerAdapter {
+    public NettyChatServerHandler(List<Channel> channels) {
+    }
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("Netty Chat Server Connected");
