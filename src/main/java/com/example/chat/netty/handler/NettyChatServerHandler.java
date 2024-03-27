@@ -12,9 +12,6 @@ import java.util.List;
 
 @Slf4j
 public class NettyChatServerHandler extends ChannelInboundHandlerAdapter {
-    public NettyChatServerHandler(List<Channel> channels) {
-    }
-
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("Netty Chat Server Connected");

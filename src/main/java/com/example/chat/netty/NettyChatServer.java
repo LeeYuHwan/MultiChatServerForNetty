@@ -18,8 +18,6 @@ public class NettyChatServer {
     private EventLoopGroup bossGroup = new NioEventLoopGroup(1);
     private EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-    private List<Channel> channels = new ArrayList<>();
-
     public void run() {
         try {
             ServerBootstrap bs = new ServerBootstrap();
@@ -31,7 +29,7 @@ public class NettyChatServer {
                         @Override
                         public void initChannel(SocketChannel ch) {
                             ChannelPipeline p = ch.pipeline();
-                            p.addLast(new NettyChatServerHandler(channels));
+                            p.addLast(new NettyChatServerHandler());
                         }
                     });
             ChannelFuture f = bs.bind(8888).sync();
