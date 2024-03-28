@@ -1,0 +1,3 @@
+INSERT INTO USER (USER_ID, PASSWORD) VALUES
+('doha', '1234'),
+('sungmen', '1234');
