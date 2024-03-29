@@ -3,3 +3,16 @@ spring:
     init:
       schema-locations: classpath*:db/h2/schema.sql
       data-locations: classpath*:db/h2/data.sql
+netty:
+  server:
+    transfer:
+      type: tcp
+      port: 9812
+    thread:
+      count:
+        boss: 1
+        worker: 1
+    log:
+      level:
+        pipeline: ERROR
+        bootstrap: ERROR

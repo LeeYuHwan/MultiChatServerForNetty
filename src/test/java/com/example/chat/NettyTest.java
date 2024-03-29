@@ -29,7 +29,7 @@ public class NettyTest {
         EmbeddedChannel channel = new EmbeddedChannel(); //카페 차림
 
         channel.pipeline().addLast(new LoggingHandler(LogLevel.INFO)); //들고 나가는 고객 로그 기록
-        channel.pipeline().addLast(new LineBasedFrameDecoder(80)); // 엔터(\n)키로 단락 분리하고 80byte가 최대 임
+        //channel.pipeline().addLast(new LineBasedFrameDecoder(80)); // 엔터(\n)키로 단락 분리하고 80byte가 최대 임
         channel.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8)); // ByteBuf -> 문자열로 변경
         channel.pipeline().addLast(new EchoServerHandler()); // channelRead에 전달
 
@@ -37,7 +37,7 @@ public class NettyTest {
 
         ByteBuf buf = Unpooled.buffer();
         //buf.writeBytes("안녕 반가워\n".getBytes());
-        buf.writeBytes("{\"name\":\"doha\",\"description\":\"lalalala\"}\n".getBytes());
+        buf.writeBytes("{\"task\":\"createRoom\"}\n".getBytes());
 
         channel.writeInbound(buf);  // 손님 들어간다
 

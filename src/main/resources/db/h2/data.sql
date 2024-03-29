@@ -1,3 +1,3 @@
-INSERT INTO USER (USER_ID, PASSWORD) VALUES
-('doha', '1234'),
-('sungmen', '1234');
+INSERT INTO USER_INFO (USER_NAME,USER_ID, PASSWORD) VALUES
+('도하','doha123', '1234'),
+('성만','sungmen123', '1234');
