@@ -27,7 +27,7 @@ public class RoomService {
         String userId = channelIdUserIdRepository.getChannelIdUserIdMap().get(channel.id());
         responseData.put("task", task);
 
-        if(channelIdUserIdRepository.getChannelIdUserIdMap().containsKey(userId)) {
+        if(userIdRoomIdRepository.getUserIdRoomIdMap().containsKey(userId)) {
 
             responseData.put("error", "Already entered user");
             messageSendService.sendMessage(channel, responseData, new Exception("룸에 입장해있는 사용자입니다."), "1006");
