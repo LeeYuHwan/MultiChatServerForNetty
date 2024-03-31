@@ -28,7 +28,7 @@ public class LoginService {
             return;
         }
 
-        UserInfo user = userRepository.findById(userId).orElseThrow(Exception::new);
+        UserInfo user = userRepository.findByUserId(userId);
 
         if (user == null) {
 

@@ -37,7 +37,7 @@ public class NettyTest {
 
         ByteBuf buf = Unpooled.buffer();
         //buf.writeBytes("안녕 반가워\n".getBytes());
-        buf.writeBytes("{\"task\":\"createRoom\"}\n".getBytes());
+        buf.writeBytes("{\"userId\":\"doha123\", \"password\":\"1234\",\"task\":\"login\"}\n".getBytes());
 
         channel.writeInbound(buf);  // 손님 들어간다
 

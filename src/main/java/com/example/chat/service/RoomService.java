@@ -97,7 +97,7 @@ public class RoomService {
             return;
         }
 
-        UserInfo user = userRepository.findById(userId).orElseThrow(Exception::new);
+        UserInfo user = userRepository.findByUserId(userId);
         if (user == null) {
             messageSendService.sendMessage(channel, responseData, new Exception("사용자 정보를 조회할 수 없습니다.."), "1009");
             return;
@@ -106,10 +106,10 @@ public class RoomService {
         String userName = user.getUserName();
 
         // 전달할 메세지 내용 생성
-        responseData.put("method", task);
+        responseData.put("task", task);
         responseData.put("userId", userId);
         responseData.put("userName", userName);
-        responseData.put("content", requestData.get("content"));
+        responseData.put("msg", requestData.get("msg"));
 
         String roomId = userIdRoomIdRepository.getUserIdRoomIdMap().get(userId);
 

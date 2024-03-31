@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserInfo, String> {
+    UserInfo findByUserId(String userId);
 }

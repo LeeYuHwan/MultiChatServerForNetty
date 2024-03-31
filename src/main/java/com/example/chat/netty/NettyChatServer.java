@@ -28,14 +28,15 @@ public class NettyChatServer {
             bs.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_KEEPALIVE, true)
-                    .handler(new LoggingHandler(LogLevel.DEBUG))
+                    //.handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) {
                             ChannelPipeline p = ch.pipeline();
+                            p.addLast(new LoggingHandler(LogLevel.INFO));
                             p.addLast(new StringDecoder(CharsetUtil.UTF_8));
-                            p.addLast(nettyChatServerHandler);
                             p.addLast(new StringEncoder(CharsetUtil.UTF_8));
+                            p.addLast(nettyChatServerHandler);
                         }
                     });
             ChannelFuture f = bs.bind(8888).sync();
