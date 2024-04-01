@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 public class UserInfo {
@@ -16,5 +18,6 @@ public class UserInfo {
     private String userId;
     @Column(nullable = false, length = 32)
     private String password;
+    private LocalDateTime createTime;
 
 }
