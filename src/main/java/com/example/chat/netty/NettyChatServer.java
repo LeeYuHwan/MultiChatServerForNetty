@@ -1,6 +1,7 @@
 package com.example.chat.netty;
 
 import com.example.chat.netty.handler.NettyChatServerHandler;
+import com.example.chat.properties.NettyProperties;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -12,20 +13,20 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.CharsetUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
 public class NettyChatServer {
-    private EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-    private EventLoopGroup workerGroup = new NioEventLoopGroup();
-
+    @Autowired
+    private NettyProperties nettyProperties;
     @Autowired
     private NettyChatServerHandler nettyChatServerHandler;
 
     public void run() {
         try {
             ServerBootstrap bs = new ServerBootstrap();
-            bs.group(bossGroup, workerGroup)
+            bs.group(getBossGroup(), getWorkerGroup())
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_KEEPALIVE, true)
                     //.handler(new LoggingHandler(LogLevel.INFO))
@@ -39,15 +40,20 @@ public class NettyChatServer {
                             p.addLast(nettyChatServerHandler);
                         }
                     });
-            ChannelFuture f = bs.bind(8888).sync();
+            ChannelFuture f = bs.bind(nettyProperties.getPort()).sync();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void stop() {
-        workerGroup.shutdownGracefully();
-        bossGroup.shutdownGracefully();
+    @Bean(destroyMethod = "shutdownGracefully")
+    private NioEventLoopGroup getBossGroup(){
+        return new NioEventLoopGroup(nettyProperties.getCount().getBoss());
+    }
+
+    @Bean(destroyMethod = "shutdownGracefully")
+    private NioEventLoopGroup getWorkerGroup(){
+        return new NioEventLoopGroup();
     }
 }

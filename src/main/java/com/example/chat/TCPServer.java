@@ -35,8 +35,4 @@ public class TCPServer {
         nettyChatServer.run();
     }
 
-    @PreDestroy
-    private void destroy() throws Exception {
-        nettyChatServer.stop();
-    }
 }
