@@ -3,8 +3,7 @@
 
 #### 시스템 구성도
 
-![image](https://github.com/LeeYuHwan/MultiChatServerForNetty/assets/66478929/e728d231-3893-47f6-96c8-72c1fe2b418c)
-
+![image](https://github.com/LeeYuHwan/MultiChatServerForNetty/assets/66478929/18f65388-0612-40a9-8684-9e3e9c1225ac)
 
 --------------------
 
