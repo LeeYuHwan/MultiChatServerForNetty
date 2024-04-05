@@ -71,13 +71,13 @@ JSON Data를 이용하여 통신
 ## 메시지 전송
 # Request Data
 {
-"msg": Message,
+"msg": message,
 "task":"sendRoom"
 }
 
 # Response Data
 {
-"msg": Message,
+"msg": message,
 "task":"sendRoom",
 "resultCode":"0000",
 "userName": userName,
