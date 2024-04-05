@@ -29,7 +29,6 @@ JSON Data를 이용하여 통신
 --------------------
 ## 방 입장
 {
-"userId": userId
 "roomId": roomId,
 "task":"enterRoom"
 }
@@ -44,7 +43,6 @@ JSON Data를 이용하여 통신
 --------------------
 ## 메시지 전송
 {
-"userId": userId,
 "userName": userName,
 "msg": Message,
 "task":"sendRoom"
