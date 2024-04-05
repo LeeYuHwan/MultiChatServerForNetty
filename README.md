@@ -12,37 +12,74 @@
 JSON Data를 이용하여 통신
 --------------------
 ## 로그인
+# Request Data
 {
 "userId": userId,
 "password": password,
 "task":"login"
 }
 
+# Response Data
+{
+"result":"로그인 완료",
+"task":"login",
+"resultCode":"0000"
+}
+
 --------------------
 ## 방 생성
+# Request Data
 {
-"roomId": roomId,
 "task":"createRoom"
+}
+
+# Response Data
+{
+"task":"createRoom",
+"resultCode":"0000",
+"roomId": roomId
 }
 
 --------------------
 ## 방 입장
+# Request Data
 {
 "roomId": roomId,
 "task":"enterRoom"
 }
 
+# Response Data
+{"task":"enterRoom",
+"resultCode":"0000",
+"roomId": roomId
+}
+
 --------------------
 ## 방 퇴장
+# Request Data
 {
 "roomId": roomId,
 "task":"exitRoom"
 }
 
+# Response Data
+{"task":"exitRoom",
+"resultCode":"0000"
+}
+
 --------------------
 ## 메시지 전송
+# Request Data
 {
-"userName": userName,
 "msg": Message,
 "task":"sendRoom"
+}
+
+# Response Data
+{
+"msg":"testMessage",
+"task":"sendRoom",
+"resultCode":"0000",
+"userName": userName,
+"userId": userId
 }
