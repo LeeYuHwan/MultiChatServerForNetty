@@ -21,7 +21,6 @@ JSON Data를 이용하여 통신
 --------------------
 ## 방 생성
 {
-"userId": userId
 "roomId": roomId,
 "task":"createRoom"
 }
