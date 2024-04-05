@@ -77,7 +77,7 @@ JSON Data를 이용하여 통신
 
 # Response Data
 {
-"msg":"testMessage",
+"msg": Message,
 "task":"sendRoom",
 "resultCode":"0000",
 "userName": userName,
